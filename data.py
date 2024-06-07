@@ -28,13 +28,13 @@ class Dataset():
         num_sequences = len(villes)
         self.max_len = max([len(ville) for ville in villes]) + 2 # <SOS> et <EOS>
 
-        X = torch.zeros((num_sequences, max_len), dtype=torch.int32)
+        X = torch.zeros((num_sequences, self.max_len), dtype=torch.int32)
 
         for i in range(num_sequences):
             X[i] = torch.tensor([self.char_to_int['<SOS>']] +
                                 [self.char_to_int[c] for c in villes[i]] +
                                 [self.char_to_int['<EOS>']] +
-                                [self.char_to_int['<pad>']] * (max_len - len(villes[i]) - 2))
+                                [self.char_to_int['<pad>']] * (self.max_len - len(villes[i]) - 2))
 
         n_split = int(0.9*X.shape[0])
 
