@@ -1,7 +1,7 @@
 import torch
 
 class Dataset():
-    def __init__(self, file_name: str = "villes.txt"):
+    def __init__(self, file_name: str = "villes.txt", device="cpu"):
 
         # chargement des données
         fichier = open(file_name)
@@ -24,11 +24,10 @@ class Dataset():
             self.char_to_int[c] = i
             self.int_to_char[i] = c
 
-
         num_sequences = len(villes)
         self.max_len = max([len(ville) for ville in villes]) + 2 # <SOS> et <EOS>
 
-        X = torch.zeros((num_sequences, self.max_len), dtype=torch.int32)
+        X = torch.zeros((num_sequences, self.max_len), dtype=torch.int32, device=device)
 
         for i in range(num_sequences):
             X[i] = torch.tensor([self.char_to_int['<SOS>']] +
