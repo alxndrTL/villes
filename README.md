@@ -21,9 +21,11 @@ La réponse est oui, et ce repo le fait pas à pas, avec des modèles de plus en
 Les modèles les plus puissants utilisent des réseaux de neurones. Ce repo propose aussi d'interpréter les réseaux de neurones une fois ceux-ci entraînés : cela nous permet d'analyser <b>ce qui se passe dans le réseau</b> lorsqu'il produit un nom de commune.
 C'est ainsi qu'on peut découvrir des <b>concepts</b> calculés par les réseaux. Par exemple, le concept qui s'active après l'apparition de "saint" :
 
-[image concept activations saint]
+<p align="center">
+    <img src="assets/concept_saint.png" alt="france" width="350" height="350"/>
+</p>
 
-On peut joueur manuellement avec ces concepts et infuencer le réseau.
+On peut jouer manuellement avec ces concepts et infuencer le réseau.
 
 ## Génération de noms de communes
 Ce repo utilise 3 modèles différents pour générer des noms de communes :

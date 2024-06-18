@@ -1,2 +1,3 @@
 *.pth
+.DS_STORE
 __pycache__/
