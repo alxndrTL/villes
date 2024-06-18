@@ -2,9 +2,9 @@
 
 Etant donnée les plus de 36000 communes françaises, peut-on entraîner une IA à générer de nouveaux noms de communes ?
 
-<div style="text-align: center;">
-  <img src="assets/france.jpg" alt="Diagramme explicatif" width=300>
-</div>
+<p align="center">
+    <img src="assets/france.jpg" alt="france" width="300" height="300"/>
+</p>
 
 La réponse est oui, et ce repo le fait pas à pas, avec des modèles de plus en plus puissants et poussés :
 
