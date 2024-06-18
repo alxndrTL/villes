@@ -47,6 +47,8 @@ Pour extraire les concepts représentés par le réseau (on n'étudie que le Tra
 
 Tout se passe dans le fichier `4_sae.ipynb`
 
+Les fichiers `simple_sae.ipynb` et `simple_sae_topk.ipynb` ont pour but d'entraîner des SAEs sur des données test en 2 dimensions, avec peu de directions à trouver. C'est essentiellement visuel pour comprendre ce que fait le SAE.
+
 ### Recherche de concepts
 
 Une fois le SAE entraîné et sauvegardé, on peut analyser les concepts trouvés. C'est ce qui est fait dans le fichier `5_explore.ipynb`. A noter que ce fichier propose aussi l'analyse des neurones individuels (donc sans la nécessité du SAE).

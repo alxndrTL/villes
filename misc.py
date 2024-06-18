@@ -9,4 +9,3 @@ def print_colore(text, values):
 
     html_text = ''.join([f'<span style="background-color:{valeur_en_nuance_rouge(values[i % len(values)])}">{char}</span>' for i, char in enumerate(text)])
     display(HTML(html_text))
-
