@@ -37,10 +37,47 @@ Par exemple, si les embeddings des mots "chien" et "chat" sont similaires, alors
 - le Transformer : l'outil SOTA actuel pour manipuler des séquences.
 Cela est implémenté dans le fichier `3_transformer.ipynb`.
  
+## Choix des hyperparamètres
+Cette partie s'intéresse au niveau 2, c'est-à-dire l'entraînement de réseaux de neurones.
+Quel est le choix optimal de la taille du réseau à entraîner ?
+
+Sans surprise, augmenter le nombre de neurones permet de mieux coller aux données d'entraînement, ie on obtient un coût plus bas :
+<p align="center">
+    <img src="assets/loss_train.png" alt="france" width="600" height="400"/>
+</p>
+<i>Ici, on a fixé n_context=10, d_model = 8. C'est donc le paramètre d_hidden qui change, le nombre de neurones dans la couche cachée.</i>
+
+<br>
+
+Alors, on prend le plus grand réseau ? <br>
+Attention au sur-apprentissage !
+
+Voici le même graphique, mais avec le coût de validation superposé :
+
+<p align="center">
+    <img src="assets/loss_train_val.png" alt="france" width="600" height="400"/>
+</p>
+<i>Les coûts d'entraînement sont en trait plein, les coûts de validation en pointillés Les couleurs correspondent toujours à la taille des modèles.</i>
+
+<br>
+
+
+C'est un peu encombré, mais on remarque que :
+- pour les réseaux petits (`n_neurones=32` et `64`), les coûts d'entraînement et de validation se superposent : pas de problème.
+- à partir de là, plus on augmente la taille du réseau et plus on va vers la droite, plus l'écart se creuse entre les deux coûts.
+
+Donc si on prend un réseau trop puissant, qu'on entraîne trop longtemps, on passe en <b>sur-apprentissage</b> : le réseau est trop "puissant" et commence à retenir les données. Cela est aussi dû aux données qui sont en nombre assez restreint (36 000 ce n'est pas beaucoup comparée aux échelles habituelles).
+
+Et ce sur-apprentissage, il se traduit directement par des générations de noms de communes qui existent déjà :
+
+<p align="center">
+    <img src="assets/prct_existants.png" alt="france" width="600" height="400"/>
+</p>
+<i>Evolution du pourcentage des générations qui existent déjà au cours de l'entraînement.</i>
 
 ## Interpréter les réseaux entraînés
 
-Voir [ma vidéo](https://www.apple.com) sur l'interprétation des concepts dans un réseau de neurones.
+Voir [ma vidéo](https://www.youtube.com/watch?v=n4EnafoZ38Q) sur l'interprétation des concepts dans un réseau de neurones.
 
 L'idée générale est de pouvoir extraire et analyser les concepts représentés par le réseau. Ces concepts correspondent à des concepts réels liés aux données. Par exemple, dans les modèles de langage géants, on peut trouver un concept relié à la Tour Eiffel. Dans nos réseaux à petite échelle, on retrouve aussi ces concepts. 
 
