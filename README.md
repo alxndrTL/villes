@@ -32,7 +32,7 @@ Ce repo utilise 3 modèles différents pour générer des noms de communes :
 - le n-gram, qui calcul une table de transitions sur l'ensemble des données et génère des noms en échantillonnant cette table de transitions. Par exemple, pour n=2, on obtient le bigram : on construit une table de probabilités où la probabilité du couple (a, b) correspond à la probabilité d'avoir b étant donné a dans l'ensemble des données d'entraînement (les 36000 noms de communes). On généralise ça à n. Cela est implémenté dans le fichier `1_n_grams.ipynb`.
 
 - le réseau de neurones : le réseau prend en entrée le contexte de lettres (de taille fixée) et donne en sortie la lettre qui suit. On utilise un "embedding" pour chaque lettre, ce qui procure une certaine capacité de généralisation au réseau lorsqu'il apprend.
-Par exemple, si les embeddings des mots "chien" et "chat" sont similaires, alors, quand le réseau va s'entraîner sur la phrase "le chien court", il saura que la phrase "le chat court" est aussi possible (dans ce repo on ne travaille pas avec des mots mais des lettres). Cela est implémenté dans le fichier `2_mlp.ipynb`.
+Par exemple, si les embeddings des mots "chien" et "chat" sont similaires, alors, quand le réseau va s'entraîner sur la phrase "le chien court", il saura que la phrase "le chat court" est aussi possible (dans ce repo on ne travaille pas avec des mots mais des lettres). Cela est implémenté dans le fichier `2_mlp.ipynb` (`2_mlp.py` dans sa version script Python).
 
 - le Transformer : l'outil SOTA actuel pour manipuler des séquences.
 Cela est implémenté dans le fichier `3_transformer.ipynb`.
