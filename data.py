@@ -8,6 +8,7 @@ class Dataset():
         donnees = fichier.read()
         villes = donnees.replace('\n', ',').split(',')
         villes = [ville for ville in villes if len(ville) > 2]
+        self.villes = villes
 
         # création du vocabulaire
 

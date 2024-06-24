@@ -13,20 +13,26 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-from transformer import Transformer, TransformerConfig, RMSNorm
+from models.rnn.rnn import RNN, RNNConfig
+from models.transformer.transformer import Transformer, TransformerConfig, RMSNorm
+from models.mamba.mamba import Mamba, MambaConfig
 
 # todo : inference function, with no grad, with kv cache for transformer, step() for mamba
 
 class LM(nn.Module):
-    def __init__(self, model_config: Union[TransformerConfig], vocab_size: int):
+    def __init__(self, model_config: Union[RNNConfig, TransformerConfig, MambaConfig], vocab_size: int):
         super().__init__()
 
         self.config = model_config
 
         self.embedding = nn.Embedding(vocab_size, self.config.d_model, padding_idx=0)
         
-        if isinstance(self.config, TransformerConfig):
+        if isinstance(self.config, RNNConfig):
+            self.core = RNN(self.config)
+        elif isinstance(self.config, TransformerConfig):
             self.core = Transformer(self.config)
+        elif isinstance(self.config, MambaConfig):
+            self.core = Mamba(self.config)
         else:
             raise NotImplementedError
 
@@ -34,7 +40,6 @@ class LM(nn.Module):
 
         self.lm_head = nn.Linear(self.config.d_model, vocab_size, bias=False)
         self.lm_head.weight = self.embedding.weight
-
 
         self.apply(self._init_weights)
         for pn, p in self.named_parameters():

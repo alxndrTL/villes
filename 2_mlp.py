@@ -164,6 +164,9 @@ for i in range(iterations):
     if to_log:
         wandb.log(to_log, step=i)
 
+    if i%1000==0:
+        print(i)
+
 to_log = {"num_params": num_params, "num_epochs": (iterations*batch_size)/X_train.shape[0]}
 wandb.log(to_log)
 wandb.finish()
