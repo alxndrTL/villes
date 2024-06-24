@@ -18,6 +18,12 @@ La réponse est oui, et ce repo le fait pas à pas, avec des modèles de plus en
 
 - <b>niveau 4</b> : saint-andoux-le-creix, gragille, chaymont-en-calès
 
+Voici la génération de 20 nouveaux noms de communes avec l'un des modèles le plus puissant :
+
+<p align="center">
+    <img src="assets/20_noms.png" alt="france" width="240" height="420"/>
+</p>
+
 Les modèles les plus puissants utilisent des réseaux de neurones. Ce repo propose aussi d'interpréter les réseaux de neurones une fois ceux-ci entraînés : cela nous permet d'analyser <b>ce qui se passe dans le réseau</b> lorsqu'il produit un nom de commune.
 C'est ainsi qu'on peut découvrir des <b>concepts</b> calculés par les réseaux. Par exemple, le concept qui s'active après l'apparition de "saint" :
 
@@ -123,6 +129,8 @@ L'espace dans lequel on "plonge" les lettres est intéressant à analyser. En vo
 On le voit, les lettres qu'on pense être similaires sont en effet représentées par des embeddings proches. Par exemple, la a, le e et le o-e entrelacé. Juste en dessous, on retrouve les voyelles un peu plus spéciales (ÿ, ë, î...) et sur la gauche les consonnes.
 
 C'est ce même espace qui est à l'origine du fameux exemple embedding(roi) - embedding(homme) + embedding(femme) = embedding(reine). Sauf qu'au lieu d'encoder des lettres, cet exemple se base sur des embeddings de mots. Il y a donc, dans cet espace, des directions qui ont un certain sens réel (ici, la directions royauté et genre). On peut ainsi "jouer" avec ces directions et obtenir des résultats consistants.
+
+L'utilité de ce plongement est de permettre au modèle généraliser ce qu'il apprend entre les différentes lettres. Par exemple, si les embeddings des lettres a et e sont proches, alors ce que va apprendre le modèle à propos de la lettre a, il va aussi l'apprendre sur la lettre a, et inversement. S'il apprend que `san` est une combinaison de lettre courante, alors il va par la même occasion, sans autres données et grâce à l'embedding apprendre que `sen` est aussi courant.
 
 ## Interpréter les réseaux entraînés
 
