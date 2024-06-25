@@ -3,17 +3,14 @@ Script équivalent à 4_transformer.ipynb.
 Utilisé pour lancer rapidement une expé sur wandb.
 """
 
-import os
-os.chdir('/workspace/')
-
 import wandb
 wandb.login()
 
 import torch
 import torch.nn.functional as F
 
-from mamba.mamba import MambaConfig
-from lm import LM
+from models.mamba.mamba import MambaConfig
+from models.lm import LM
 
 from data import Dataset
 

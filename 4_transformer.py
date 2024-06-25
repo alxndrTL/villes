@@ -9,8 +9,8 @@ wandb.login()
 import torch
 import torch.nn.functional as F
 
-from transformer import TransformerConfig
-from lm import LM
+from models.transformer.transformer import TransformerConfig
+from models.lm import LM
 
 from data import Dataset
 

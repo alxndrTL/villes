@@ -10,7 +10,7 @@ import torch
 import torch.nn.functional as F
 
 from rnn import RNNConfig
-from lm import LM
+from models.lm import LM
 
 from data import Dataset
 
