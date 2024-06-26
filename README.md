@@ -111,7 +111,9 @@ Voici les résultats obtenus par les différentes architectures lorsqu'on augmen
 On le voit, les réseaux de neurones classiques (MLP) restent quand même assez compétitifs avec les modèles plus avancés jusqu'à un certain nombre de paramètres.
 Mamba et RNN sont à peu près au niveau des MLP. Le Transformer, lui, est le meilleur ici.
 
-<i>Ce graphique est à titre informatif, et s'applique seulement sur ce problème. Attention à ne pas en tirer de conclusions trop générales (par exemple, on utilise les mêmes hyperparamètres pour tous les modèles, peut-être que Mamba aurait profité de meilleurs hyperparamètres et que c'est pour ça qu'il est moins performant ?)</i>
+Attention, on pourrait croire que les méthodes statistiques (n-gram) sont extrêmement mauvaises. C'est un peu plus nuancé que cela. En fait, avec une taille de contexte donnée, <b>on ne pourra jamais mieux faire que le n-gram</b>. Par exemple, un réseau de neurones avec un contexte de 2 lettres ne pourra jamais faire mieux qu'un trigram, aussi grand et sophistiqué qu'on choisisse le réseau de neurones.Il n'y a pas "plus d'informations" à extraire que ce que fait déjà un trigram. Evidemment le problème, c'est que c'est très difficile d'augmenter la taille du contexte avec les n-grams, c'est pour ça qu'en pratique on utilise des réseaux de neurones.
+
+<i>Ce graphique est à titre informatif, et s'applique seulement sur ce problème. Attention à ne pas en tirer de conclusions trop générales (par exemple, on utilise les mêmes hyperparamètres pour tous les modèles, peut-être que Mamba aurait profité de meilleurs hyperparamètres et que c'est pour ça qu'il est moins performant ?). Les nombres de paramètres utilisés ici sont très loin de ceux utilisés en pratique pour des applications sérieuses.</i>
 
 ## L'utilité du plongement/embedding
 
